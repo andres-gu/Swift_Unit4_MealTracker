@@ -9,10 +9,12 @@
 import Foundation
 
 struct Food {
+    var icon: String
     var name: String
     var description: String
     
-    init(name: String, description: String) {
+    init(icon: String, name: String, description: String) {
+        self.icon = icon
         self.name = name
         self.description = description
     }

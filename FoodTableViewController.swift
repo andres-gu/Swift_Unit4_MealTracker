@@ -8,6 +8,12 @@
 
 import UIKit
 
+class FoodTableViewCell: UITableViewCell {
+    @IBOutlet weak var cellIconLabel: UILabel!
+    @IBOutlet weak var cellNameLabel: UILabel!
+    @IBOutlet weak var cellDescriptionLabel: UILabel!
+}
+
 class FoodTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -28,21 +34,21 @@ class FoodTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     var meals: [Meal] = [
-        Meal(name: "breakfast", food: [
-            Food(name:"eggs", description:"range-free eggs"),
-            Food(name: "turkey bacon", description: "low-sodium bacon"),
-            Food(name: "bread", description: "one slice of whole-wheat bread")
+        Meal(name: "Breakfast", food: [
+            Food(icon: "🍎", name:"Apple", description:"one red apple"),
+            Food(icon: "🍳", name: "Eggs", description: "two poached eggs"),
+            Food(icon: "🥞", name: "Pancakes", description: "three pancakes")
             ]),
-        Meal(name: "lunch", food: [
-            Food(name: "Hamburger Buns", description: "2 Whole-wheat hamburger buns."),
-            Food(name: "Meat Patty", description: "1/2 lb. meat patty."),
-            Food(name: "Mayo", description: "1 tbspn of Mayonnaise."),
-            Food(name: "Dills", description: "Kosher Dills")
+        Meal(name: "Lunch", food: [
+            Food(icon: "🍔", name: "Hamburger Buns", description: "2 Whole-wheat hamburger buns."),
+            Food(icon: "🍔", name: "Meat Patty", description: "1/2 lb. meat patty."),
+            Food(icon: "🍟", name: "Potatoes", description: "French Fries"),
+            Food(icon: "🥒", name: "Dills", description: "Kosher Dills")
             ]),
-        Meal(name: "dinner", food: [
-            Food(name: "Chicken Breast", description: "Chicke breast in strips."),
-            Food(name: "Salad", description: "Various vegetables."),
-            Food(name: "Avocado", description: "Avocado paste?")
+        Meal(name: "Dinner", food: [
+            Food(icon: "🍗", name: "Chicken Breast", description: "Chicke breast in strips."),
+            Food(icon: "🥗", name: "Salad", description: "Various vegetables."),
+            Food(icon: "🥑", name: "Avocado", description: "Avocado paste?")
             ]),
     ]
     
@@ -69,12 +75,13 @@ class FoodTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath) as! FoodTableViewCell
         let meal = meals[indexPath.section].food[indexPath.row]
         
-        cell.textLabel?.text = meal.name
-        cell.detailTextLabel?.text = meal.description
-
+        cell.cellIconLabel?.text = meal.icon
+        cell.cellNameLabel?.text = meal.name
+        cell.cellDescriptionLabel?.text = meal.description
+        
         return cell
     }
     

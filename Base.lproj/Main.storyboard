@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,29 +19,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="foodCell" textLabel="ygV-Iu-F25" detailTextLabel="58k-mQ-rGU" rowHeight="50" style="IBUITableViewCellStyleSubtitle" id="6UL-Tj-XbT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="foodCell" rowHeight="50" id="6UL-Tj-XbT" customClass="FoodTableViewCell" customModule="MealTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6UL-Tj-XbT" id="fTT-du-0uO">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ygV-Iu-F25">
-                                            <rect key="frame" x="16" y="8" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="58k-mQ-rGU">
-                                            <rect key="frame" x="16" y="28.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dEI-aR-KOm">
+                                            <rect key="frame" x="56" y="5" width="285" height="38.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rh-ju-v3S">
+                                                    <rect key="frame" x="0.0" y="0.0" width="285" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PG-bR-8uS">
+                                                    <rect key="frame" x="0.0" y="21.5" width="285" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚪️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q60-eA-p6S">
+                                            <rect key="frame" x="16" y="11" width="25" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="zha-Au-F4N"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dEI-aR-KOm" firstAttribute="top" secondItem="fTT-du-0uO" secondAttribute="top" constant="5" id="4uz-1n-FoN"/>
+                                        <constraint firstAttribute="bottom" secondItem="dEI-aR-KOm" secondAttribute="bottom" constant="6" id="R22-65-qig"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Q60-eA-p6S" secondAttribute="bottom" id="X1O-vb-fUf"/>
+                                        <constraint firstItem="Q60-eA-p6S" firstAttribute="top" secondItem="fTT-du-0uO" secondAttribute="topMargin" id="eyA-b4-dT5"/>
+                                        <constraint firstAttribute="trailing" secondItem="dEI-aR-KOm" secondAttribute="trailing" id="koP-gz-pk4"/>
+                                        <constraint firstItem="Q60-eA-p6S" firstAttribute="leading" secondItem="fTT-du-0uO" secondAttribute="leadingMargin" id="kxB-jA-O2y"/>
+                                        <constraint firstItem="dEI-aR-KOm" firstAttribute="leading" secondItem="Q60-eA-p6S" secondAttribute="trailing" constant="15" id="wZf-Zk-p2N"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellDescriptionLabel" destination="0PG-bR-8uS" id="th9-hh-hjG"/>
+                                    <outlet property="cellIconLabel" destination="Q60-eA-p6S" id="Koc-MI-iXj"/>
+                                    <outlet property="cellNameLabel" destination="4rh-ju-v3S" id="umW-WS-KBJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
